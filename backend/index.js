@@ -1,7 +1,15 @@
 import express from 'express';
-import products from './products.js'
+import dotenv from 'dotenv';
+
+import connectDB from './config/db.js';
+import productsRoutes from './routes/productsRoutes.js'
+
+dotenv.config();
+connectDB();
 
 const app = express();
+
+app.use('/api/products', productsRoutes);
 
 app.get('/', (req, res) => { res.send('server is running') });
 

@@ -1,21 +1,26 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaTrash } from 'react-icons/fa'
-import { addToCart } from '../redux/actions/cartAction'
-import MassageBox from './MassageBox'
+import { addToCart, removeFromCart } from '../redux/actions/cartAction'
 
-const Cart = () => {
- 
 
+const Cart = ({history}) => {
+
+  
   const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart;
 
   const checkOutHandler = () => {
-    console.log('clicked')
+    history.push('/login?redirect=shipping')
   } 
+
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id))
+    history.replace('/cart')
+  }
 
     return (
       <div className='min-h-full'>
@@ -46,10 +51,12 @@ const Cart = () => {
                            </select>
                             </form> 
           </Link></div>
-          <button className='mx-8 pt-4 text-purple-300 text-xl hover:text-gray-300' type='button'  ><FaTrash/></button>
+          <button  className='mx-8 pt-4 text-purple-300 text-xl hover:text-gray-300' type='button' onClick={removeFromCartHandler} ><FaTrash /></button>
 
           </div>))
         }</div>)
+        
+
       }
 <div className='mt-10 font-semibold italic text-gray-600 text-lg ml-24 border-blue-50 p-3 border-2'>
       <h2 className='pb-4 capitalize'>total items ({cartItems.reduce((acc, item) =>acc + item.qty
@@ -57,4 +64,22 @@ const Cart = () => {
 
        <h2 className='capitalize border-t-2 border-gray-400 pt-4'>Total cost R {cartItems.reduce((acc,item)=>(acc + item.qty * item.price),0).toFixed(2)}</h2>
 
-       <button className='block b
+       <button className='block bg-black text-white px-4
+       rounded-md  py-2 text-md my-3 italic font-light'
+       type='button' disabled={cartItems===0} onClick={checkOutHandler} >proceed to chechout</button>
+
+      </div>
+     
+
+      </div>
+      
+      </div>
+   
+  )
+  
+  }
+
+ 
+
+
+export default Cart

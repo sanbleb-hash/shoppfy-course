@@ -5,8 +5,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch backend backend/index.js"
+    "start": "nodemon --watch backend backend/index.js",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder-d"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.13.2"
+  }
 }
