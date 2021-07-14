@@ -29,14 +29,14 @@ const Cart = ({history}) => {
 
       
       {
-        cartItems.length ===0? <span className='block mt-40 text-center text-lg text-red-300'>your cart is empty <Link className='block mt-6 mb-24 text-gray-700 text-2xl hover:text-purple-300' to='/'>go Shopping</Link></span> : (<div className='min-h-full mb-56 mt-8   flex flex-col'>{
+        cartItems.length ===0? <span className='block mt-40 text-center text-lg text-red-300'>your cart is empty <h4 className='block mt-6 mb-24 text-gray-700 text-2xl hover:text-purple-300' to='/'>go Shopping</h4></span> : (<div className='min-h-full mb-56 mt-8   flex flex-col'>{
           cartItems.map(item=>(<div className='w-full border-b-2 border-solid border-gray-300 pb-2 h-36 my-4 mx-8  flex justify-center  items-start' key={item.product}>
           <div className='h-full w-36'>
           <img className='h-full rounded-lg  w-full' src={item.image} alt={item.name}/>
           </div>
           <div className='mx-7 pt-3'><Link to={`/product/${item.product}`}>{item.name}</Link></div>
-          <div className='mx-7 pt-3' ><Link>R {item.price}</Link></div>
-          <div  className='mx-7 pt-3'><Link>
+          <div className='mx-7 pt-3' ><h3>R {item.price}</h3></div>
+          <div  className='mx-7 pt-3'><h3>
            <form className='border-blue-200 border w-full bg-gray-300 mb-2 text-gray-400 rounded-md'>
                            <select className='outline-none border-none w-8 
                              text-gray-500'  value={item.qty}
@@ -50,7 +50,7 @@ const Cart = ({history}) => {
                            }
                            </select>
                             </form> 
-          </Link></div>
+          </h3></div>
           <button  className='mx-8 pt-4 text-purple-300 text-xl hover:text-gray-300' type='button' onClick={removeFromCartHandler} ><FaTrash /></button>
 
           </div>))
