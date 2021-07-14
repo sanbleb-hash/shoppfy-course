@@ -18,8 +18,8 @@ const Cart = ({history}) => {
   } 
 
   const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id))
-    history.replace('/cart')
+    dispatch(removeFromCart(id));
+    // history.replace('/cart')
   }
 
     return (
@@ -58,7 +58,7 @@ const Cart = ({history}) => {
         
 
       }
-<div className='mt-10 font-semibold italic text-gray-600 text-lg ml-24 border-blue-50 p-3 border-2 float-left'>
+<div className='mt-10 font-semibold italic text-gray-600 text-lg ml-24 border-blue-50 p-3 border-2'>
       <h2 className='pb-4 capitalize'>total items ({cartItems.reduce((acc, item) =>acc + item.qty
       , 0)})</h2>
 

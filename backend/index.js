@@ -3,29 +3,23 @@ import dotenv from 'dotenv';
 // import products from './products.js'
 import connectDB from './config/db.js';
 import productRoutes from './routes/productsRoutes.js'
+import userRouter from './routes/userRouter.js';
 
 dotenv.config();
 connectDB();
 
 const app = express();
+app.use(express.json);
+app.use(express.urlencoded({extended:true}));
+
 
 app.get('/', (req, res) => { res.send('server is running') });
 
 app.use('/api/products',productRoutes)
 app.use('/api/product/:id',productRoutes)
+app.use('/api/users',userRouter)
+app.use((err,req,res,next)=>{res.status(500).send({message:err.message})})
 
-// app.get('/api/products', (req, res) => {
-//     res.send(products)
-// });
-
-// app.get('/api/product/:id', (req, res) => {
-//     const product = products.find(x => x._id === req.params.id);
-//     if (!product) {
-//         res.status(404).send({ message: 'product not found' })
-//     } else {
-//         res.send(product)
-//     }
-// });
 const port = process.env.PORT || 5000
 
 app.listen(port, () => {
