@@ -27,22 +27,22 @@ const ProductScreen = ({ history,match }) => {
     }
 
     return (
-        <section className='h-screen mt-16 overflow-hidden '>
-            <Link to='/' className='text-lg text-gray-800 p-20   ' >go back</Link >
+        <section className=' h-auto mt-16 overflow-hidden '>
+            <Link to='/' className=' text-lg text-gray-800 p-20   ' >go back</Link >
             {loading ? (<Loading />) : error ? (<MessageBox>{error}</MessageBox>)
-                :( <div className=' m-auto flex items-start justify-center flex-auto border-b-2 pb-9'>
+                :( <div className=' m-auto items-center  flex mx-1 justify-center  flex-col  flex-auto border-b-2  md:flex-row pb-9 sm:justify-center sm:mx-8'>
                     <div className='h-96 w-2/4 mt-13  max-w-lg'>
                         <img src={product.image} alt={product.name} className='pb-6 h-full w-full' />
                     </div>
-                    <div className=' flex-grow px-8  max-w-xs '>
-                        <ul className='border-l-2 pl-9'>
+                    <div className=' flex-grow px-8  max-w-xs py-10 '>
+                        <ul className='sm:border-l-2 pt-3 border-t-2 pl-9'>
                             <li className='text-gray-800 font-bold'>R{product.price}</li>
                             <li className='py-5'>{product&&product.description}</li>
                             <li><h4><Rating product={product} text={`${product.numReviews} reviews`} value={product.rating} /></h4></li>
 
                         </ul>
                     </div>
-                    <div className=' border-l-2 pl-9'>
+                    <div className=' sm:border-l-2 border-t-2 pt-3 pl-9'>
                         <ul>
                             <li><span className='font-bold text-gray-800'>price : R </span>{product.price}</li>
                             <li>

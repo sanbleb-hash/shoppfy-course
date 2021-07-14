@@ -23,14 +23,14 @@ const Cart = ({history}) => {
   }
 
     return (
-      <div className='min-h-full'>
+      <div className='h-auto'>
       <h1 className='mt-14 text-blue-500 text-center font-semibold text-4xl'>shopping cart</h1>
-      <div className='flex items-start justify-start bg-gray-200 mt-5 container'>
+      <div className='flex items-start flex-col justify-center h-auto sm:flex-row bg-gray-400 mt-5 mb-5 '>
 
       
       {
-        cartItems.length ===0? <span className='block mt-40 text-center text-lg text-red-300'>your cart is empty <h4 className='block mt-6 mb-24 text-gray-700 text-2xl hover:text-purple-300' to='/'>go Shopping</h4></span> : (<div className='min-h-full mb-56 mt-8   flex flex-col'>{
-          cartItems.map(item=>(<div className='w-full border-b-2 border-solid border-gray-300 pb-2 h-36 my-4 mx-8  flex justify-center  items-start' key={item.product}>
+        cartItems.length ===0? <span className=' mt-40 text-center sm:text-lg text-red-300 '>your cart is empty <h4 className='block mt-6 mb-24 text-gray-700 text-2xl hover:text-purple-300' to='/'>go Shopping</h4></span> : (<div className='min-h-full mb-56 mt-8   flex flex-col'>{
+          cartItems.map(item=>(<div className='w-auto border-b-2 border-solid border-gray-300 pb-2 h-36 my-4 mx-8  flex justify-center  items-start' key={item.product}>
           <div className='h-full w-36'>
           <img className='h-full rounded-lg  w-full' src={item.image} alt={item.name}/>
           </div>
@@ -58,7 +58,7 @@ const Cart = ({history}) => {
         
 
       }
-<div className='mt-10 font-semibold italic text-gray-600 text-lg ml-24 border-blue-50 p-3 border-2'>
+<div className='mt-10 font-semibold italic text-gray-600 text-lg ml-24 border-blue-50 p-3 border-2 float-left'>
       <h2 className='pb-4 capitalize'>total items ({cartItems.reduce((acc, item) =>acc + item.qty
       , 0)})</h2>
 

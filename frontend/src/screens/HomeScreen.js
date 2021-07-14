@@ -27,7 +27,7 @@ const HomeScreen = () => {
                 loading ? (<Loading />) : error ? (<MessageBox>{error}</MessageBox>)
                     : (
 
-                        <div className='grid grid-cols-3 gap-2 my-6 mx-9'  >
+                        <div className='mx-auto flex flex-col justify-center items-center max-w-lg md:grid md:grid-cols-3 gap-2 my-6 sm:mx-9 md:max-w-full sm:grid sm:grid-cols-2 sm:max-w-full' >
                             {products&&products.map(product => {
                                 return <div key={product._id} className='shadow-md rounded-lg '>
                                 
