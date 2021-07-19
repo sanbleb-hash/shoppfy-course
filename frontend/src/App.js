@@ -5,7 +5,8 @@ import Footer from "./components/Footer";
 
 import ProductScreen from "./screens/ProductScreen";
 import Cart from './components/Cart'
-import Loading from "./components/Loading";
+
+import SigninScreen from "./screens/SigninScreen";
 
 
 function App () {
@@ -14,10 +15,10 @@ function App () {
       <Router>
         <NavBar />
         <Switch>
-          <Route path='/cart'component={Cart}/>
-          <Route path='/login' component={Loading} Route />
-          <Route path='/' exact><HomeScreen /></Route>
-          <Route path='/product/:id' component={ProductScreen} />
+          <Route path='/cart'component={Cart}></Route>
+          <Route path='/' exact component={HomeScreen }></Route>
+          <Route path='/product/:id' component={ProductScreen} ></Route>
+          <Route path='/signin' component={SigninScreen}></Route>
 
         </Switch>
         <Footer />

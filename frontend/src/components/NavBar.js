@@ -9,7 +9,7 @@ const NavBar = () => {
                     <span className='inline-block text-xl hover:bg-gray-400'><Link to='/'>Online Shop</Link></span>
                     <div>
                         <span className='inline-block text-lg hover:bg-gray-400'><Link to='/cart'>cart</Link ></span>
-                        <span className=' inline-block text-lg pl-7 hover:border-r-gray-300'><Link to='/login'>log in</Link></span>
+                        <span className=' inline-block text-lg pl-7 hover:border-r-gray-300'><Link to='/signin'>sign in</Link></span>
                     </div>
                 </div>
             </div>

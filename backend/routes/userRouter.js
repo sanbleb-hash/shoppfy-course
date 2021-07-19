@@ -1,33 +1,46 @@
 import express from 'express';
-import AsyncHandler from 
-'express-async-handler';
-import bcrypt from 'bcryptjs';
+
 import { generateToken } from '../utils/generateToken.js';
 import User from '../modals/userModal.js'
-import { users} from '../config/user.js'
+import asyncHandler from 'express-async-handler';
+import router from './productsRoutes.js';
 
 const userRouter = express.Router();
 
-userRouter.get('/config',AsyncHandler(async(req,res)=>{
-  // await User.remove({});
-  const createdUsers = await User.insertMany(users);
-  res.send([{ createdUsers}]);
- }));
- 
- userRouter.post('/signin',AsyncHandler(async(req,res)=>{
-   const user = User.findOne({email:req.body.email});
-   if(user){
-     if(bcrypt.compareSync(req.body.password ,user.password)){
-       res.send({
-         _id: user.id,
-         name: user.name,
-         email: user.email,
-         isAdmin: user.isAdmin,
-         token: generateToken(user),
-       })
-       return;
-     }
-   }
-   res.status(401).send({message:'invalid imail or password'})
- }))
+//user router
+router.post('/signin',asyncHandler(async(req, res)=>{
+  const { email, password } = req.body
+  const user = User.findOne({email})
+  if(user && (await user.matchPassword(password))){
+    res.json({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      isAdmin: usr.isAdmin,
+      tokeen: generateToken(user),
+    });
+  }
+   else {
+     res.status(401)
+     throw new Error({Error: 'invalid imail or password'})
+  }
+}))
+
+router.route('/profile',asyncHandler(async(req, res)=>{
+  const user = User.findById(req.user._id);
+
+if(user) {
+res.json({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      isAdmin: usr.isAdmin,
+    });
+} else {
+  res.status(404)
+  throw new Error('user not found') 
+}
+
+  res.send('success')
+}));
  export default userRouter;
